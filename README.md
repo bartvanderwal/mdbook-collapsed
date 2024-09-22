@@ -81,7 +81,7 @@ You can now view the collapsible sections in your browser at `http://localhost:3
 Here's how you can add collapsible sections in your Markdown:
 
 ```markdown
-# Introduction #collapsed
+# Introduction
 
 This is the introduction content.
 
@@ -96,6 +96,29 @@ This will render as headings that can be clicked to expand or collapse the conte
 Automatically collapses any section with a heading ending in #collapsed.
 Simple, intuitive configuration through Markdown syntax.
 Retains users' progress (checked items, expanded sections) using `localStorage`.
+
+Please note that any 'lower' subsections should also collapse with the #collapsed section.
+The 'collapse block' only stops at higher level blocks. Tip: remember to correctly have your heading levels, for instance using [`markdownlint`](https://github.com/DavidAnson/markdownlint).
+
+### Example Behavior
+
+For input like this:
+
+```markdown
+# Heading 1
+
+## Collapsed Section #collapsed
+
+Some content inside collapsed section.
+
+### Subsection
+
+Content in subsection.
+
+## Another Section
+
+The ## Collapsed Section #collapsed will collapse everything inside it, including ### Subsection, but not the subsequent ## Another Section.
+```
 
 ## Contributing
 

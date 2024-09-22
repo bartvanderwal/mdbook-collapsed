@@ -2,6 +2,8 @@ use mdbook::book::BookItem;
 use mdbook::errors::Error;
 use mdbook::preprocess::{Preprocessor, PreprocessorContext};
 use mdbook::book::Book;
+use regex::Regex;
+
 // use mdbook::renderer::RenderContext;
 // use pulldown_cmark::{Event, Options, Parser, Tag};
 // use std::process;
@@ -28,15 +30,18 @@ fn inject_collapsed(content: &str) -> String {
     let mut output = String::new();
     let mut in_collapsed = false;
 
+    // Define a regex for headers that end with `#collapsed`
+    let header_regex = Regex::new(r"^#+ .* #collapsed$").unwrap();
+
     for line in content.lines() {
-        if line.trim() == "## Collapsed" {
+        // Check if the line matches the collapsible header pattern
+        if header_regex.is_match(line.trim()) {
             output.push_str(r#"<div class="collapsed-section"><h2 id="collapsed-title" onclick="toggleCollapsed()">&#x25BC; Collapsed</h2><div id="collapsed-content" style="display:none;">"#);
             in_collapsed = true;
-        } else if in_collapsed && line.starts_with("## ") {
+        } else if in_collapsed && line.starts_with("#") {
             output.push_str("</div></div>"); // close collapsed div
             in_collapsed = false;
         }
-
         if in_collapsed {
             output.push_str(&format!(
                 r#"<input type="checkbox" class="collapsed-checkbox" onchange="saveProgress()"> {line}<br>"#

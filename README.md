@@ -1,8 +1,22 @@
 # mdbook-collapsed
 
+Important Note: This plugin does NOT work yet. I'm writing it for my own use on the website [minordevops.nl](https://minordevops.nl) for the minor I teach. But I'm a complete [Rust](https://www.rust-lang.org/) newbie. I'm getting a lot of help of ChatGPT as well. Thought it's NOT as good in Rust as it is in other languages. It's also a good forray into the world of Prompt Engineering and the current LLM's programming capabilities.
+
 A preprocessor plugin for [mdBook](https://rust-lang.github.io/mdBook/) that adds collapsible sections to your book's content (initially collapsed by default). A collapsible section is defined by adding `#collapsed` at the end of any heading, making it easier to create interactive and cleaner documentation.
 
 Notice the name is 'collapsed' not 'collapsible'. This is beacuse by default the sections are collapsed. This is intentional, to have a less busy page by default.
+
+Important: This plugin only supports collapsing sections in `#` headers. It does NOT (yet) support [Setext](https://en.wikipedia.org/wiki/Setext) style headers, e.g. headers which look like this:
+
+```markdown
+Header 1
+========
+
+Header 2
+--------
+```
+
+This might be added later. Or add a pull request, once it's stable.
 
 ## How to Run
 
@@ -116,6 +130,14 @@ For more details on testing, code style, and submitting changes, check out CONTR
 
 This project is licensed under the [MIT License](https://opensource.org/license/mit).
 
+## Note on the use of ChatGPT
+
+ChatGPT did also write large parts of this `README.md` and `CONTRIBUTING.md` so I think it has some 'understanding' what it does. The idea is not that complicated. Actually I was surprised something like this did NOT exist yet. Perhaps it does, and I can't find it. But ChatGPT did advise to use the plugin `mdbook-collapsible` to get what I wanted. But it turned out that did NOT exist, it was a complete fabrication.
+
+My use of ChatGPT does not mean my endorsing of this technology. I read Nick Bostrom's book [`Superintelligence: Paths, Dangers, Strategies` (2014)](https://en.wikipedia.org/wiki/Superintelligence:_Paths,_Dangers,_Strategies) and it scared me. Though I don't believe LLM's themselves will cause the singularity, they could be an important brick on the road to AGI. :scared
+
+I believe LLM's will be a 10x factor, sooner than `Functional programming`. Read Mark Seemann's excellent post [`Yes, Silver Bullet`](https://blog.ploeh.dk/2019/07/01/yes-silver-bullet/) on this (2019).
+
 ## Contact
 
-For any questions or issues, please contact the project maintainer at bartvanderwal at gmail dot com.
+For any questions or issues, please contact the project maintainer at bartvanderwal at han dot nl.

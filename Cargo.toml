@@ -9,3 +9,13 @@ regex = "1"
 mdbook = "0.4.40"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
+
+# The library in the crate (optional)
+[lib]
+name = "mdbook_collapsed"
+path = "src/lib.rs"  # Your library code (optional)
+
+# The binary crate
+[[bin]]
+name = "mdbook-collapsed"
+path = "src/main.rs"
